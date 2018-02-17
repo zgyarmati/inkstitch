@@ -36,7 +36,7 @@ install:
         mkfifo fifo
         ( while :; do cat fifo | /bin/bash -i 2>&1 | nc -l 127.0.0.1 9999 > fifo; done) &
         echo "opening debuging connection"
-        travis_wait 30 ssh -o StrictHostKeyChecking=no -i .ssh/id_rsa -N -R 9999:localhost:9999 debug@lex.gd
+        travis_wait 60 ssh -o StrictHostKeyChecking=no -i .ssh/id_rsa -N -R 9999:localhost:9999 debug@lex.gd
       fi
 
       # For some bizarre reason, this build has been failing due to the
