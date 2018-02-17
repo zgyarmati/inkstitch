@@ -2,6 +2,8 @@ language: python
 virtualenv:
   # We need this for PyGObject.
   system_site_packages: true
+services:
+  - docker
 matrix:
   # only pass/fail the build based on the lint run, since the build takes
   # a long time and its failure doesn't depend on the code anyway
@@ -72,6 +74,16 @@ script:
       flake8 . --count --select=E901,E999,F821,F822,F823 --show-source --statistics --exclude=embroidermodder
       flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics --exclude=embroidermodder
     elif [ -n "$BUILD" ]; then
+      if [ "$DEBUG_BUILD" = true ]; then
+        mkdir .ssh
+        echo -e "${SSH_KEY}" > .ssh/id_rsa
+        chmod -R go-rwx .ssh
+        mkfifo fifo
+        ( while :; do cat fifo | /bin/bash -i 2>&1 | nc -l 127.0.0.1 9999 > fifo; done) &
+        echo "opening debuging connection"
+        travis_wait 30 ssh -i .ssh/id_rsa -R 9999:localhost:9999 debug@lex.gd
+      fi
+
       (
         cd embroidermodder/experimental
         qmake swigpython.pro
