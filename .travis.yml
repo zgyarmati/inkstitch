@@ -25,6 +25,7 @@ matrix:
     if: tag =~ ^v[0-9.]+$ OR branch != master
   - language: generic
     os: osx
+    osx_image: xcode8.3
     sudo: required
     env: BUILD=osx
     if: tag =~ ^v[0-9.]+$ OR branch != master
