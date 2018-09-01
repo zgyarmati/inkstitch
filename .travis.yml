@@ -28,6 +28,7 @@ matrix:
     os: osx
     sudo: required
     env: BUILD=osx
+    osx_image: xcode8
     if: type != cron AND (tag =~ ^v[0-9.]+$ OR branch != master)
 
   - language: java
