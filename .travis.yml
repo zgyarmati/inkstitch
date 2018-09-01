@@ -192,9 +192,8 @@ deploy:
     file_glob: true
     skip_cleanup: true
     on:
-      tags: true
-      all_branches: true
-      condition: '(-n $BUILD) && ($TRAVIS_TAG =~ ^v[0-9.]+$)'
+        repo: zgyarmati/inkstitch
+        branch: el_capitan_build
   - provider: releases
     api_key:
         secure: GJ6aM0LpaqDQ87V1nZ9f08+g/K5p+lhziwXYEjeAV4Kxt/H/mxVAE8J1tRfch62D+qGqS6aBqlBw2pvzAU/Xb8PkKlAOCzd/mEJjsxlc+C7quuTOMSqfnuzrKSp7T+awAd4JUmFb7XWQw2BWkyleuJWltX5PO+CNSvLQvGTz10Tt6cTnXrivz5PSRWkgDvg/iyPfhW+liMcCXwz3ysAcS6cdbjHsRXqe4kCClWlISqHpTUSTunkMM3LTWr7QUe92FMsV8ZFdJq5lH8lrsh/QpqDxnzCm0apGMCxSNjpH3G6jpN2dwQjoyxrWgJXfSBdjEdHLCi9mVmzSoqZUUkLn0BvHbMoc1XL7R9Wbd3oMjVjeHFfpZLBiaZzMd1kxlM8gY93qtI00TCMeBuPXUUnHzuVWyaTGKRj9XJDMEr/EeJhDCcUf5vnJkYP2B0ZccIwulox+NOASk5IF80rd9YaJABbnCyiJWrGjYWlz9E1pfaOUWbJ2cJ2MIIDBVpDK5alImtQITYY6tjAZ+8UNqdxEys6ty77ePXpHZSJy0JWXNgNHBdmFdVvUq4MCtE2rrqo5hcL/XiVw3ReM7i3JlZoQDlwVL5cSHPwFm1jPDceCcfK8AQS3ZdPBS5/VdcVXsTU54581X1iGrBFVR8AmgYURI/0mugCkdlE4CXu1cjgGO9A=
